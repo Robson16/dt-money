@@ -1,0 +1,20 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "amount": 5000,
+      "createdAt": "2025-10-27T15:51:00Z"
+    },
+    {
+      "id": 2,
+      "description": "Almoço com cliente",
+      "type": "outcome",
+      "category": "Alimentação",
+      "amount": 50,
+      "createdAt": "2025-10-28T12:30:00Z"
+    }
+  ]
+}
