@@ -1,13 +1,16 @@
+import { useContext } from 'react'
 import {
   PiArrowCircleDown,
   PiArrowCircleUp,
   PiCurrencyDollar,
 } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
+import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { SummaryCard, SummaryContainer } from './styles'
 
 export function Summary() {
   const theme = useTheme()
+  const { transactions } = useContext(TransactionsContext)
 
   return (
     <SummaryContainer>
@@ -16,7 +19,14 @@ export function Summary() {
           <span>Entradas</span>
           <PiArrowCircleUp size={32} color={theme['green-300']} />
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>
+          {transactions.reduce((acc, transaction) => {
+            if (transaction.type === 'income') {
+              return acc + transaction.amount
+            }
+            return acc
+          }, 0)}
+        </strong>
       </SummaryCard>
 
       <SummaryCard>

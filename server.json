@@ -13,8 +13,24 @@
       "description": "Almoço com cliente",
       "type": "outcome",
       "category": "Alimentação",
-      "amount": 50,
+      "amount": 39.90,
       "createdAt": "2025-10-28T12:30:00Z"
+    },
+    {
+      "id": 3,
+      "description": "Manutenção do site",
+      "type": "income",
+      "category": "Receita recorrente",
+      "amount": 120.00,
+      "createdAt": "2025-10-28T08:00:00Z"
+    },
+    {
+      "id": 4,
+      "description": "Streaming de vídeo",
+      "type": "outcome",
+      "category": "Entretenimento",
+      "amount": 19.99,
+      "createdAt": "2025-10-29T09:15:00Z"
     }
   ]
 }
