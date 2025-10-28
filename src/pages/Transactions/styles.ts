@@ -27,9 +27,9 @@ export const TransactionsTable = styled.table`
     }
   }
 `
-export const PriceHighlight = styled.span<{ variant: 'income' | 'outcome' }>`
+export const PriceHighlight = styled.span<{ $variant: 'income' | 'outcome' }>`
   color: ${(props) =>
-    props.variant === 'income'
+    props.$variant === 'income'
       ? props.theme['green-300']
       : props.theme['red-300']};
 `
