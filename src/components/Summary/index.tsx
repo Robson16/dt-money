@@ -1,36 +1,16 @@
-import { useContext } from 'react'
 import {
   PiArrowCircleDown,
   PiArrowCircleUp,
   PiCurrencyDollar,
 } from 'react-icons/pi'
 import { useTheme } from 'styled-components'
-import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { SummaryCard, SummaryContainer } from './styles'
+import { useSummary } from '../../hooks/useSummary'
 import { priceFormatter } from '../../utils/formatter'
+import { SummaryCard, SummaryContainer } from './styles'
 
 export function Summary() {
   const theme = useTheme()
-  const { transactions } = useContext(TransactionsContext)
-
-  const summary = transactions.reduce(
-    (acc, transaction) => {
-      if (transaction.type === 'income') {
-        acc.income += transaction.amount
-        acc.total += transaction.amount
-      } else {
-        acc.outcome += transaction.amount
-        acc.total -= transaction.amount
-      }
-
-      return acc
-    },
-    {
-      income: 0,
-      outcome: 0,
-      total: 0,
-    },
-  )
+  const summary = useSummary()
 
   return (
     <SummaryContainer>
