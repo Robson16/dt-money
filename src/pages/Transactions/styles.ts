@@ -3,8 +3,8 @@ import { styled } from 'styled-components'
 export const TransactionsContainer = styled.main`
   width: 100%;
   max-width: 1120px;
-  margin: 4rem auto 0;
-  padding: 0 1.5rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 1.5rem;
 `
 export const TransactionsTable = styled.table`
   width: 100%;

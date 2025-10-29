@@ -7,6 +7,7 @@ import {
 import { useTheme } from 'styled-components'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
 import { SummaryCard, SummaryContainer } from './styles'
+import { priceFormatter } from '../../utils/formatter'
 
 export function Summary() {
   const theme = useTheme()
@@ -38,7 +39,7 @@ export function Summary() {
           <span>Entradas</span>
           <PiArrowCircleUp size={32} color={theme['green-300']} />
         </header>
-        <strong>{summary.income}</strong>
+        <strong>{priceFormatter.format(summary.income)}</strong>
       </SummaryCard>
 
       <SummaryCard>
@@ -46,7 +47,7 @@ export function Summary() {
           <span>Saidas</span>
           <PiArrowCircleDown size={32} color={theme['red-300']} />
         </header>
-        <strong>{summary.outcome}</strong>
+        <strong>{priceFormatter.format(summary.outcome)}</strong>
       </SummaryCard>
 
       <SummaryCard $variant="green">
@@ -54,7 +55,7 @@ export function Summary() {
           <span>Total</span>
           <PiCurrencyDollar size={32} color={theme.white} />
         </header>
-        <strong>{summary.total}</strong>
+        <strong>{priceFormatter.format(summary.total)}</strong>
       </SummaryCard>
     </SummaryContainer>
   )
