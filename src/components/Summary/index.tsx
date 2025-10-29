@@ -12,6 +12,25 @@ export function Summary() {
   const theme = useTheme()
   const { transactions } = useContext(TransactionsContext)
 
+  const summary = transactions.reduce(
+    (acc, transaction) => {
+      if (transaction.type === 'income') {
+        acc.income += transaction.amount
+        acc.total += transaction.amount
+      } else {
+        acc.outcome += transaction.amount
+        acc.total -= transaction.amount
+      }
+
+      return acc
+    },
+    {
+      income: 0,
+      outcome: 0,
+      total: 0,
+    },
+  )
+
   return (
     <SummaryContainer>
       <SummaryCard>
@@ -19,14 +38,7 @@ export function Summary() {
           <span>Entradas</span>
           <PiArrowCircleUp size={32} color={theme['green-300']} />
         </header>
-        <strong>
-          {transactions.reduce((acc, transaction) => {
-            if (transaction.type === 'income') {
-              return acc + transaction.amount
-            }
-            return acc
-          }, 0)}
-        </strong>
+        <strong>{summary.income}</strong>
       </SummaryCard>
 
       <SummaryCard>
@@ -34,7 +46,7 @@ export function Summary() {
           <span>Saidas</span>
           <PiArrowCircleDown size={32} color={theme['red-300']} />
         </header>
-        <strong>R$ 1.259,00</strong>
+        <strong>{summary.outcome}</strong>
       </SummaryCard>
 
       <SummaryCard $variant="green">
@@ -42,7 +54,7 @@ export function Summary() {
           <span>Total</span>
           <PiCurrencyDollar size={32} color={theme.white} />
         </header>
-        <strong>R$ 16.141,00</strong>
+        <strong>{summary.total}</strong>
       </SummaryCard>
     </SummaryContainer>
   )
