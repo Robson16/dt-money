@@ -1,14 +1,14 @@
 import { useContext } from 'react'
 import { Header } from '../../components/Header'
+import { SearchForm } from '../../components/SearchForm'
 import { Summary } from '../../components/Summary'
 import { TransactionsContext } from '../../contexts/TransactionsContext'
-import { SearchForm } from './components/SearchForm'
+import { dateFormatter, priceFormatter } from '../../utils/formatter'
 import {
   PriceHighlight,
   TransactionsContainer,
   TransactionsTable,
 } from './styles'
-import { dateFormatter, priceFormatter } from '../../utils/formatter'
 
 export function Transactions() {
   const { transactions } = useContext(TransactionsContext)
