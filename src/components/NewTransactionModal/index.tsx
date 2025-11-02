@@ -1,5 +1,8 @@
+import { zodResolver } from '@hookform/resolvers/zod'
 import * as Dialog from '@radix-ui/react-dialog'
+import { Controller, useForm } from 'react-hook-form'
 import { PiArrowCircleDown, PiArrowCircleUp, PiX } from 'react-icons/pi'
+import * as zod from 'zod'
 import {
   CloseButton,
   Content,
@@ -7,26 +10,30 @@ import {
   TransactionType,
   TransactionTypeButton,
 } from './styles'
-import * as zod from 'zod'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 
 const newTransactionFormSchema = zod.object({
   description: zod.string(),
   amount: zod.number(),
   category: zod.string(),
-  // type: zod.enum(['income', 'outcome']),
+  type: zod.enum(['income', 'outcome']),
 })
 
 type NewTransactionFormInputs = zod.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<NewTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: {
+      description: '',
+      amount: 0,
+      category: '',
+      type: 'income',
+    },
   })
 
   async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
@@ -44,6 +51,9 @@ export function NewTransactionModal() {
           <PiX size={24} />
         </CloseButton>
         <Dialog.Title>Nova Transação</Dialog.Title>
+        <Dialog.Description>
+          Crie uma nova transação de entrada ou saída.
+        </Dialog.Description>
 
         <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
           <input
@@ -67,16 +77,27 @@ export function NewTransactionModal() {
             {...register('category')}
           />
 
-          <TransactionType>
-            <TransactionTypeButton $variant="income" value="income">
-              <PiArrowCircleUp size={24} />
-              Entrada
-            </TransactionTypeButton>
-            <TransactionTypeButton $variant="outcome" value="outcome">
-              <PiArrowCircleDown size={24} />
-              Saída
-            </TransactionTypeButton>
-          </TransactionType>
+          <Controller
+            control={control}
+            name="type"
+            render={({ field }) => {
+              return (
+                <TransactionType
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <TransactionTypeButton $variant="income" value="income">
+                    <PiArrowCircleUp size={24} />
+                    Entrada
+                  </TransactionTypeButton>
+                  <TransactionTypeButton $variant="outcome" value="outcome">
+                    <PiArrowCircleDown size={24} />
+                    Saída
+                  </TransactionTypeButton>
+                </TransactionType>
+              )
+            }}
+          />
 
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? 'Cadastrando...' : 'Cadastrar'}
