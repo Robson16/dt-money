@@ -13,7 +13,7 @@
       "description": "Almoço com cliente",
       "type": "outcome",
       "category": "Alimentação",
-      "amount": 39.90,
+      "amount": 39.9,
       "createdAt": "2025-10-28T12:30:00Z"
     },
     {
@@ -21,7 +21,7 @@
       "description": "Manutenção do site",
       "type": "income",
       "category": "Receita recorrente",
-      "amount": 120.00,
+      "amount": 120,
       "createdAt": "2025-10-28T08:00:00Z"
     },
     {
@@ -31,6 +31,22 @@
       "category": "Entretenimento",
       "amount": 19.99,
       "createdAt": "2025-10-29T09:15:00Z"
+    },
+    {
+      "description": "Desenvolvimento de app",
+      "amount": 5000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2025-11-02T19:18:06.314Z",
+      "id": 5
+    },
+    {
+      "description": "Pastel da Feira",
+      "amount": 12,
+      "category": "Alimentação",
+      "type": "outcome",
+      "createdAt": "2025-11-02T19:36:18.818Z",
+      "id": 6
     }
   ]
 }
