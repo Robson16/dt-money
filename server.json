@@ -47,6 +47,14 @@
       "type": "outcome",
       "createdAt": "2025-11-02T19:36:18.818Z",
       "id": 6
+    },
+    {
+      "description": "Viagem de Uber",
+      "amount": 21,
+      "category": "Transporte",
+      "type": "outcome",
+      "createdAt": "2025-11-03T17:35:44.603Z",
+      "id": 7
     }
   ]
 }
