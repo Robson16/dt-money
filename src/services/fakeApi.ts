@@ -43,7 +43,7 @@ export const api = {
   /**
    * Imita o: api.get('transactions', { params: ... })
    */
-  get: async (path: string, config?: { params: any }) => {
+  get: async (_path: string, config?: { params: any }) => {
     await delay(300) // Finge um delay
     const params = config?.params || {}
     let data = [...transactionsDB] // Pega os dados do "banco"
@@ -73,7 +73,7 @@ export const api = {
   /**
    * Imita o: api.post('transactions', { ... })
    */
-  post: async (path: string, data: any) => {
+  post: async (_path: string, data: any) => {
     await delay(300) // Finge um delay
 
     // Cria a nova transação
