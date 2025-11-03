@@ -24,19 +24,22 @@ export function Transactions() {
         <SearchForm />
         <TransactionsTable>
           <tbody>
-            {transactions.map((transaction) => (
-              <tr key={transaction.id}>
-                <td width="50%">{transaction.description}</td>
-                <td>
-                  <PriceHighlight $variant={transaction.type}>
-                    {transaction.type === 'outcome' && '- '}
-                    {priceFormatter.format(transaction.amount)}
-                  </PriceHighlight>
-                </td>
-                <td>{transaction.category}</td>
-                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
-              </tr>
-            ))}
+            {Array.isArray(transactions) &&
+              transactions.map((transaction) => (
+                <tr key={transaction.id}>
+                  <td width="50%">{transaction.description}</td>
+                  <td>
+                    <PriceHighlight $variant={transaction.type}>
+                      {transaction.type === 'outcome' && '- '}
+                      {priceFormatter.format(transaction.amount)}
+                    </PriceHighlight>
+                  </td>
+                  <td>{transaction.category}</td>
+                  <td>
+                    {dateFormatter.format(new Date(transaction.createdAt))}
+                  </td>
+                </tr>
+              ))}
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
