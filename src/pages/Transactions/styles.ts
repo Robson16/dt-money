@@ -6,6 +6,26 @@ export const TransactionsContainer = styled.main`
   margin: 0 auto;
   padding: 4rem 1.5rem 1.5rem;
 `
+
+export const TableContainer = styled.div`
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${(props) => props.theme['gray-600']};
+    border-radius: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${(props) => props.theme['green-500']};
+    border-radius: 6px;
+  }
+`
+
 export const TransactionsTable = styled.table`
   width: 100%;
   border-collapse: separate;
